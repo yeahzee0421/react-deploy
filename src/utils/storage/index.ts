@@ -2,7 +2,7 @@ import type { OrderHistory, WishList } from '@/types';
 
 interface AuthToken {
   id: string;
-  pwd: string;
+  token: string;
 }
 
 interface StorageKey {

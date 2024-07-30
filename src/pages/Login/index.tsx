@@ -6,14 +6,15 @@ import KAKAO_LOGO from '@/assets/kakao_logo.svg';
 import { Button } from '@/components/common/Button';
 import { UnderlineTextField } from '@/components/common/Form/Input/UnderlineTextField';
 import { Spacing } from '@/components/common/layouts/Spacing';
+import useLogin from '@/hooks/Auth/useLogin';
 import { RouterPath } from '@/routes/path';
 import { breakpoints } from '@/styles/variants';
-import { handleLogin } from '@/utils/login';
 
 export const LoginPage = () => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { mutateAsync: login } = useLogin(id);
 
   const navigateToSignUp = () => {
     navigate(RouterPath.signup);
@@ -25,7 +26,7 @@ export const LoginPage = () => {
       return;
     }
 
-    handleLogin(id, password);
+    login({ id, password });
   };
 
   return (

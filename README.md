@@ -20,8 +20,9 @@ npm run start:MSW
 
 **✨Member API**
 
-- [ ] 회원가입
-- [ ] 로그인
+- [x] 회원가입
+- [x] 로그인
+- [ ] 상태코드에 따른 예외처리
 
 **✨Category API**
 
