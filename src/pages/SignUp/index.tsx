@@ -21,7 +21,6 @@ export const SignUpPage = () => {
       return;
     }
 
-    //세션 스토리지에 회원정보 저장
     authSessionStorage.set({ id: id, pwd: password });
 
     const storedAuth = authSessionStorage.get();

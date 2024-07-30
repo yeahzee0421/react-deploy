@@ -1,15 +1,10 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 
-import { initInstance } from '@/api/instance';
-
-const BASE_URL_CHOI = 'http://13.125.199.167:8080';
-const BASE_URL_KO = 'http://3.36.54.48:8080';
+import { BASE_URL_CHOI, BASE_URL_KO, setBaseURL } from '@/api/instance';
 
 export const SelectAPIButton = () => {
-  const handleSelectAPI = (url: string) => {
-    initInstance({
-      baseURL: url,
-    });
+  const handleSelectAPI = (url: string): void => {
+    setBaseURL(url);
   };
 
   return (
