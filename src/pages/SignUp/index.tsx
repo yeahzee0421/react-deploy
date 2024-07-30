@@ -1,36 +1,24 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import KAKAO_LOGO from '@/assets/kakao_logo.svg';
 import { Button } from '@/components/common/Button';
 import { UnderlineTextField } from '@/components/common/Form/Input/UnderlineTextField';
 import { Spacing } from '@/components/common/layouts/Spacing';
-import { RouterPath } from '@/routes/path';
+import useSignUp from '@/hooks/Auth/useSignUp';
 import { breakpoints } from '@/styles/variants';
-import { authSessionStorage } from '@/utils/storage';
 
 export const SignUpPage = () => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  const { mutateAsync: signUp } = useSignUp();
 
   const handleConfirm = () => {
     if (!id || !password) {
       alert('아이디와 비밀번호를 입력해주세요.');
       return;
     }
-
-    authSessionStorage.set({ id: id, pwd: password });
-
-    const storedAuth = authSessionStorage.get();
-
-    //회원정보가 저장되면
-    if (storedAuth) {
-      navigate(RouterPath.login);
-    } else {
-      alert('회원가입에 실패했습니다.');
-    }
+    signUp({ id, password });
   };
 
   return (
@@ -45,7 +33,6 @@ export const SignUpPage = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-
         <Spacing
           height={{
             initial: 40,

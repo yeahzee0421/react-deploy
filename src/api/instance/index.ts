@@ -2,9 +2,8 @@ import { QueryClient } from '@tanstack/react-query';
 import type { AxiosInstance, AxiosRequestConfig } from 'axios';
 import axios from 'axios';
 
-export const BASE_URL = 'https://example.com';
+export const BASE_URL = 'http://3.36.54.48:8080';
 export const BASE_URL_CHOI = 'http://13.125.199.167:8080';
-export const BASE_URL_KO = 'http://3.36.54.48:8080';
 
 export const initInstance = (config: AxiosRequestConfig): AxiosInstance => {
   const instance = axios.create({
@@ -21,15 +20,16 @@ export const initInstance = (config: AxiosRequestConfig): AxiosInstance => {
 };
 
 export const fetchInstance = initInstance({
-  baseURL: BASE_URL_KO,
+  baseURL: BASE_URL,
 });
 
 export let axiosInstance: AxiosInstance = axios.create({
   timeout: 5000,
-  baseURL: BASE_URL_KO,
+  baseURL: BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true,
 });
 
 export const setBaseURL = (newBaseURL: string): void => {
