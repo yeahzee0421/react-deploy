@@ -1,19 +1,22 @@
 # react-deploy
 
-## How to start
+**How to start**
 
 ```
 npm install
 npm run start
 ```
 
-## How to start MSW
+**How to start MSW**
 
 ```
 npm run start:MSW
 ```
 
 ## 📜STEP1
+
+- [x] 서버 선택 버튼 UI 구현
+- [ ] 서버 선택 기능 구현
 
 **✨Member API**
 

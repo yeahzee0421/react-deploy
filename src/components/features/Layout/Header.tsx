@@ -5,6 +5,8 @@ import { Container } from '@/components/common/layouts/Container';
 import { useAuth } from '@/provider/Auth';
 import { getDynamicPath, RouterPath } from '@/routes/path';
 
+import { SelectAPIButton } from '../SelectAPI/Button';
+
 export const Header = () => {
   const navigate = useNavigate();
   const authInfo = useAuth();
@@ -23,6 +25,7 @@ export const Header = () => {
           />
         </Link>
         <RightWrapper>
+          <SelectAPIButton />
           {authInfo ? (
             <LinkButton onClick={() => navigate(RouterPath.myAccount)}>내 계정</LinkButton>
           ) : (
@@ -49,7 +52,13 @@ export const Wrapper = styled.header`
 const Logo = styled.img`
   height: ${HEADER_HEIGHT};
 `;
-const RightWrapper = styled.div``;
+const RightWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-contents: center;
+`;
 
 const LinkButton = styled.p`
   align-items: center;
