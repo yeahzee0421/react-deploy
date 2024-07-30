@@ -5,7 +5,7 @@ import { Container } from '@/components/common/layouts/Container';
 import { useAuth } from '@/provider/Auth';
 import { getDynamicPath, RouterPath } from '@/routes/path';
 
-import { SelectAPIButton } from '../SelectAPI/Button';
+import { SelectAPIButton } from '../SelectAPI';
 
 export const Header = () => {
   const navigate = useNavigate();

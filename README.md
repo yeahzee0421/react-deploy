@@ -16,7 +16,7 @@ npm run start:MSW
 ## 📜STEP1
 
 - [x] 서버 선택 버튼 UI 구현
-- [ ] 서버 선택 기능 구현
+- [x] 서버 선택 기능 구현
 
 **✨Member API**
 
