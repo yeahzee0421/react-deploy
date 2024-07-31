@@ -26,7 +26,8 @@ npm run start:MSW
 
 **✨Category API**
 
-- [ ] 카테고리 목록 조회
+- [x] 카테고리 생성
+- [x] 카테고리 목록 조회
 
 **✨Product API**
 
