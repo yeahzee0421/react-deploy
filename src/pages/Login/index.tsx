@@ -14,7 +14,7 @@ export const LoginPage = () => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const { mutateAsync: login } = useLogin(id);
+  const { mutate: login } = useLogin(id);
 
   const navigateToSignUp = () => {
     navigate(RouterPath.signup);
