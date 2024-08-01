@@ -1,6 +1,5 @@
 {
   "name": "kakao-tech-campus-frontend-project",
-  "homepage": "https://yeahzee0421.github.io/react-deploy",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -93,5 +92,6 @@
       "^@/(.*)$": "<rootDir>/src/$1",
       "^axios$": "axios/dist/node/axios.cjs"
     }
-  }
+  },
+  "homepage": "https://yeahzee0421.github.io/react-deploy"
 }
