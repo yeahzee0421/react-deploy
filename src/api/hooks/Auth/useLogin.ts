@@ -5,6 +5,11 @@ import { BASE_ENDPOINTS } from '@/api/endpoints';
 import { axiosInstance } from '@/api/instance';
 import { authSessionStorage } from '@/utils/storage';
 
+type ErrorData = {
+  code: number;
+  message: string;
+};
+
 const loginRequest = async (data: { id: string; password: string }) => {
   const requestData = {
     email: data.id,
@@ -20,7 +25,7 @@ const useLogin = (id: string) => {
   return useMutation({
     mutationFn: loginRequest,
     onSuccess: (response) => {
-      if (response.status === 200) {
+      if (response.status === 200 || response.status === 201) {
         const token = response.data.token;
         alert('로그인 성공!');
         authSessionStorage.set({ id: id, token: token });
@@ -29,11 +34,12 @@ const useLogin = (id: string) => {
     },
     onError: (error: AxiosError) => {
       const errorResponse = error.response;
+      const errorData = error.response?.data as ErrorData;
       if (errorResponse && errorResponse.status === 403) {
-        alert('이미 존재하는 아이디입니다.');
+        alert(errorData.message);
         return;
       }
-      alert('이메일 또는 비밀번호가 일치하지 않습니다.');
+      alert('로그인 실패');
     },
   });
 };

@@ -43,3 +43,8 @@ npm run start:MSW
 - [x] 위시리스트 상품 등록
 - [x] 위시리스트 상품 클릭시 상품 디테일 페이지로 이동
 - [x] 위시리스트 상품 삭제
+
+## 📜STEP2
+
+gh-pages로 배포한 페이지 링크
+[바로가기](https://yeahzee0421.github.io/react-deploy/)
