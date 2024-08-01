@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/kakao-tech-gift/static/css/main.6dd7ed3d.css",
+    "main.js": "/kakao-tech-gift/static/js/main.d37c796f.js",
+    "static/js/551.e11cd165.chunk.js": "/kakao-tech-gift/static/js/551.e11cd165.chunk.js",
+    "static/js/689.4377951a.chunk.js": "/kakao-tech-gift/static/js/689.4377951a.chunk.js",
+    "static/media/kakao_logo.svg": "/kakao-tech-gift/static/media/kakao_logo.976fd2de0dc47a40dc4cad638b9b69e1.svg",
+    "index.html": "/kakao-tech-gift/index.html",
+    "main.6dd7ed3d.css.map": "/kakao-tech-gift/static/css/main.6dd7ed3d.css.map",
+    "main.d37c796f.js.map": "/kakao-tech-gift/static/js/main.d37c796f.js.map",
+    "551.e11cd165.chunk.js.map": "/kakao-tech-gift/static/js/551.e11cd165.chunk.js.map",
+    "689.4377951a.chunk.js.map": "/kakao-tech-gift/static/js/689.4377951a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6dd7ed3d.css",
+    "static/js/main.d37c796f.js"
+  ]
+}
