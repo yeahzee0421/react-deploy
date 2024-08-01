@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 import { Button } from '@/components/common/Button';
 import { Spacing } from '@/components/common/layouts/Spacing';
-import { WishListSection } from '@/components/features/WishList';
+import { WishListSection } from '@/components/features/WishList/WishListSection';
 import { useAuth } from '@/provider/Auth';
 import { RouterPath } from '@/routes/path';
 import { authSessionStorage } from '@/utils/storage';
@@ -22,6 +22,7 @@ export const MyAccountPage = () => {
       <h4 style={{ fontSize: '28px', fontWeight: '700' }}>{authInfo?.name}님 안녕하세요!</h4>
       <Spacing height={64} />
       <WishListSection />
+      <Spacing height={30} />
       <Button
         size="small"
         theme="darkGray"

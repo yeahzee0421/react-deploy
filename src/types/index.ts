@@ -54,9 +54,9 @@ export type MessageCardTemplateData = {
   imageUrl: string;
 };
 
-export interface WishListItem {
+export type WishListItem = {
   id: number;
-  product: Omit<ProductData, 'categoryId'>;
-}
-
-export type WishList = WishListItem[];
+  name: string;
+  price: number;
+  imageUrl: string;
+};
