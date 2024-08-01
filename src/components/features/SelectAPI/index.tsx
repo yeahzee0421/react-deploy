@@ -1,6 +1,6 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 
-import { BASE_URL, BASE_URL_CHOI } from '@/api/instance';
+import { BASE_URL } from '@/api/instance';
 
 export const SelectAPIButton = () => {
   const handleSelectAPI = (url: string): void => {
@@ -14,7 +14,7 @@ export const SelectAPIButton = () => {
       </MenuButton>
       <MenuList>
         <MenuItem onClick={() => handleSelectAPI(BASE_URL)}>고명준</MenuItem>
-        <MenuItem onClick={() => handleSelectAPI(BASE_URL_CHOI)}>최준형</MenuItem>
+        <MenuItem onClick={() => handleSelectAPI(BASE_URL)}>최준형</MenuItem>
       </MenuList>
     </Menu>
   );

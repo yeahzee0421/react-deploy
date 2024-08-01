@@ -7,7 +7,7 @@ import {
 import type { ProductData } from '@/types';
 
 import { BASE_URL } from '../instance';
-import { fetchInstance } from './../instance/index';
+import { axiosInstance } from './../instance/index';
 
 type RequestParams = {
   categoryId: string;
@@ -48,7 +48,7 @@ export const getProductsPath = ({ categoryId, pageToken, maxResults }: RequestPa
 };
 
 export const getProducts = async (params: RequestParams): Promise<ProductsResponseData> => {
-  const response = await fetchInstance.get<ProductsResponseRawData>(getProductsPath(params));
+  const response = await axiosInstance.get<ProductsResponseRawData>(getProductsPath(params));
   const data = response.data;
 
   return {

@@ -3,7 +3,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 
 import type { WishListItem } from '@/types';
 
-import { BASE_URL, fetchInstance } from '../../instance';
+import { axiosInstance, BASE_URL } from '../../instance';
 
 type RequestParams = {
   pageToken?: string;
@@ -38,7 +38,7 @@ export const getWishesPath = ({ pageToken, maxResults }: RequestParams) => {
 };
 
 export const getWishes = async (params: RequestParams): Promise<WishListResponseData> => {
-  const response = await fetchInstance.get<WishListResponseRawData>(getWishesPath(params));
+  const response = await axiosInstance.get<WishListResponseRawData>(getWishesPath(params));
   const data = response.data;
 
   return {
