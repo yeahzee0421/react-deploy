@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
+import type { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 import { BASE_ENDPOINTS } from '@/api/endpoints';
@@ -11,20 +12,24 @@ const signUpRequest = async (data: { id: string; password: string }) => {
     password: data.password,
   };
   const response = await axiosInstance.post(`${BASE_ENDPOINTS.MEMBER}/register`, requestData);
-  return response.status;
+  return response;
 };
 
 const useSignUp = () => {
   const navigate = useNavigate();
   return useMutation({
     mutationFn: signUpRequest,
-    onSuccess: (status) => {
-      if (status === 201) {
+    onSuccess: (response) => {
+      if (response.status === 200) {
         navigate(RouterPath.login);
       }
     },
-    onError: (error) => {
-      console.error('회원가입 실패:', error);
+    onError: (error: AxiosError) => {
+      if (error.response?.status === 409) {
+        alert('이미 존재하는 아이디입니다.');
+        return;
+      }
+      alert('회원가입 실패');
     },
   });
 };

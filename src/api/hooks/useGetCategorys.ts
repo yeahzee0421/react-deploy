@@ -11,7 +11,6 @@ const categoriesQueryKey = [getCategoriesPath()];
 
 export const getCategories = async () => {
   const response = await axiosInstance.get<CategoryResponseData>(getCategoriesPath());
-  console.log(response);
   return response.data;
 };
 

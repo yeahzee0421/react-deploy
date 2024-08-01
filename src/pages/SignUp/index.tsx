@@ -11,7 +11,7 @@ import { breakpoints } from '@/styles/variants';
 export const SignUpPage = () => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
-  const { mutateAsync: signUp } = useSignUp();
+  const { mutate: signUp } = useSignUp();
 
   const handleConfirm = () => {
     if (!id || !password) {
