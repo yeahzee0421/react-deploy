@@ -7,11 +7,11 @@ import {
   useGetProductDetail,
 } from '@/api/hooks/useGetProductDetail';
 import { useGetProductOptions } from '@/api/hooks/useGetProductOptions';
-import { useAddWishes } from '@/api/hooks/Wishes/useAddWishes';
+import { useAddWishes } from '@/api/hooks/Wishes/useHandleWishes';
 import { Button } from '@/components/common/Button';
 import { RouterPath } from '@/routes/path';
 import { useRedirectToLoginByAuth } from '@/utils/auth';
-import { orderHistorySessionStorage, wishesSessionStorage } from '@/utils/storage';
+import { orderHistorySessionStorage } from '@/utils/storage';
 
 import { CountOptionItem } from './OptionItem/CountOptionItem';
 
@@ -33,18 +33,14 @@ export const OptionSection = ({ productId }: Props) => {
 
   const handleWishItem = () => {
     if (!checkAuthAndRedirect()) return;
-    addWishes(
-      { productId: productId },
-      {
-        onSuccess: () => {
-          wishesSessionStorage.set({ productId: productId });
-          alert('관심 등록 완료');
-        },
-        onError: () => {
-          if (isError) alert(error.message);
-        },
+    addWishes(productId, {
+      onSuccess: () => {
+        alert('관심 등록 완료');
       },
-    );
+      onError: () => {
+        alert('관심 등록 실패');
+      },
+    });
   };
 
   const handleClick = () => {

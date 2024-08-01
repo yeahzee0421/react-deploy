@@ -31,21 +31,29 @@ export const fetchInstance = initInstance({
   withCredentials: true,
 });
 
-export let axiosInstance: AxiosInstance = axios.create({
-  timeout: 5000,
+export const axiosInstance = initInstance({
   baseURL: BASE_URL_CHOI,
   headers: {
     Authorization: `Bearer ${token}`,
-    'Content-Type': 'application/json',
   },
   withCredentials: true,
 });
 
-export const setBaseURL = (newBaseURL: string): void => {
-  axiosInstance = axios.create({
-    baseURL: newBaseURL,
-  });
-};
+// export let axiosInstance: AxiosInstance = axios.create({
+//   timeout: 5000,
+//   baseURL: BASE_URL_CHOI,
+//   headers: {
+//     Authorization: `Bearer ${token}`,
+//     'Content-Type': 'application/json',
+//   },
+//   withCredentials: true,
+// });
+
+// export const setBaseURL = (newBaseURL: string): void => {
+//   axiosInstance = axios.create({
+//     baseURL: newBaseURL,
+//   });
+// };
 
 export const queryClient = new QueryClient({
   defaultOptions: {

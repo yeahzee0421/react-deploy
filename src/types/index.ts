@@ -55,8 +55,8 @@ export type MessageCardTemplateData = {
 };
 
 export type WishListItem = {
-  id: number;
+  id: string;
   name: string;
   price: number;
-  imageUrl: string;
+  imageUrl?: string;
 };
