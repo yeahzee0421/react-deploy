@@ -42,7 +42,7 @@ export const CreateCategorySection = () => {
         onSuccess: () => {
           reset();
           setIsInputVisible(false);
-          setErrorMessage(null); // Clear error message on successful submission
+          setErrorMessage(null);
         },
         onError: () => {
           setErrorMessage('카테고리 생성을 실패했습니다.');

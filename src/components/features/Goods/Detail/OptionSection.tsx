@@ -7,10 +7,11 @@ import {
   useGetProductDetail,
 } from '@/api/hooks/useGetProductDetail';
 import { useGetProductOptions } from '@/api/hooks/useGetProductOptions';
+import { useAddWishes } from '@/api/hooks/Wishes/useAddWishes';
 import { Button } from '@/components/common/Button';
 import { RouterPath } from '@/routes/path';
 import { useRedirectToLoginByAuth } from '@/utils/auth';
-import { orderHistorySessionStorage } from '@/utils/storage';
+import { orderHistorySessionStorage, wishesSessionStorage } from '@/utils/storage';
 
 import { CountOptionItem } from './OptionItem/CountOptionItem';
 
@@ -24,8 +25,27 @@ export const OptionSection = ({ productId }: Props) => {
   const totalPrice = useMemo(() => {
     return detail.price * Number(countAsString);
   }, [detail, countAsString]);
+
   const checkAuthAndRedirect = useRedirectToLoginByAuth();
   const navigate = useNavigate();
+
+  const { mutate: addWishes, isPending, isError, error } = useAddWishes();
+
+  const handleWishItem = () => {
+    if (!checkAuthAndRedirect()) return;
+    addWishes(
+      { productId: productId },
+      {
+        onSuccess: () => {
+          wishesSessionStorage.set({ productId: productId });
+          alert('관심 등록 완료');
+        },
+        onError: () => {
+          if (isError) alert(error.message);
+        },
+      },
+    );
+  };
 
   const handleClick = () => {
     if (!checkAuthAndRedirect()) return;
@@ -45,13 +65,15 @@ export const OptionSection = ({ productId }: Props) => {
           총 결제 금액 <span>{totalPrice}원</span>
         </PricingWrapper>
         <ButtonWrapper>
-          <Button theme="darkGray" size="responsive">
+          <Button theme="darkGray" size="responsive" onClick={handleWishItem}>
             ♥️ 관심 ♥️
           </Button>
           <Button theme="black" size="large" onClick={handleClick}>
             나에게 선물하기
           </Button>
         </ButtonWrapper>
+        {isPending && <Pending>위시리스트에 상품 등록 중...</Pending>}
+        {isError && <Error>{error.message}</Error>}
       </BottomWrapper>
     </Wrapper>
   );
@@ -75,6 +97,18 @@ const ButtonWrapper = styled.div`
   flex-direction: row;
   gap: 10px;
 `;
+
+const Pending = styled.span`
+  font-size: 12px;
+  margin-top: 4px;
+`;
+
+const Error = styled.span`
+  font-size: 12px;
+  margin-top: 4px;
+  color: red;
+`;
+
 const PricingWrapper = styled.div`
   margin-bottom: 20px;
   padding: 18px 20px;

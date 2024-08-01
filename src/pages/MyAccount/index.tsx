@@ -19,10 +19,10 @@ export const MyAccountPage = () => {
 
   return (
     <Wrapper>
-      <h4 style={{ fontSize: '28px', fontWeight: '700' }}>{authInfo?.name}님 안녕하세요!</h4>
+      <h4 style={{ fontSize: '20px', fontWeight: '700' }}>{authInfo?.name}님 안녕하세요!</h4>
       <Spacing height={64} />
       <WishListSection />
-      <Spacing height={30} />
+      <Spacing height={64} />
       <Button
         size="small"
         theme="darkGray"

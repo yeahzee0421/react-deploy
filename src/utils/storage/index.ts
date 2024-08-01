@@ -5,9 +5,14 @@ interface AuthToken {
   token: string;
 }
 
+interface Wishes {
+  productId: string;
+}
+
 interface StorageKey {
   authToken?: AuthToken;
   orderHistory?: OrderHistory;
+  wishes?: Wishes;
 }
 
 const initStorage = <T extends keyof StorageKey>(key: T, storage: Storage) => {
@@ -33,4 +38,4 @@ const initStorage = <T extends keyof StorageKey>(key: T, storage: Storage) => {
 
 export const authSessionStorage = initStorage('authToken', sessionStorage);
 export const orderHistorySessionStorage = initStorage('orderHistory', sessionStorage);
-// export const wishListSessionStorage = initStorage('wishList', sessionStorage);
+export const wishesSessionStorage = initStorage('wishes', sessionStorage);
