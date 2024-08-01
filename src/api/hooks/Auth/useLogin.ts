@@ -14,7 +14,7 @@ const loginRequest = async (data: { id: string; password: string }) => {
   return response;
 };
 
-const useSignUp = (id: string) => {
+const useLogin = (id: string) => {
   const queryParams = new URLSearchParams(window.location.search);
   const redirectUrl = queryParams.get('redirect') ?? `${window.location.origin}/`;
   return useMutation({
@@ -34,4 +34,4 @@ const useSignUp = (id: string) => {
   });
 };
 
-export default useSignUp;
+export default useLogin;

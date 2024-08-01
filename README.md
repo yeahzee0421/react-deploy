@@ -31,11 +31,11 @@ npm run start:MSW
 
 **✨Product API**
 
-- [ ] 상품 목록 조회
+- [x] 상품 목록 조회
 
 **✨Option API**
 
-- [ ] 상품 옵션 목록 조회
+- [x] 상품 옵션 목록 조회
 
 **✨Wish API**
 

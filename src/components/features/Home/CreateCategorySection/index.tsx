@@ -4,8 +4,8 @@ import { useState } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 
+import { useCreateCategory } from '@/api/hooks/Categories/useCreateCategory';
 import { Container } from '@/components/common/layouts/Container';
-import { useCreateCategory } from '@/hooks/Categories/useCreateCategory';
 import { breakpoints } from '@/styles/variants';
 
 interface FormValues {
@@ -75,10 +75,10 @@ export const CreateCategorySection = () => {
               />
               {errors.description && <Error>{errors.description.message}</Error>}
               <ButtonWrapper>
-                <Button colorScheme="gray" onClick={handleCancelButtonClick}>
+                <Button size="sm" colorScheme="gray" onClick={handleCancelButtonClick}>
                   취소하기
                 </Button>
-                <Button type="submit" colorScheme="orange">
+                <Button size="sm" type="submit" colorScheme="orange">
                   생성하기
                 </Button>
               </ButtonWrapper>

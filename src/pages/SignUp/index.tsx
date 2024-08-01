@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
 
+import useSignUp from '@/api/hooks/Auth/useSignUp';
 import KAKAO_LOGO from '@/assets/kakao_logo.svg';
 import { Button } from '@/components/common/Button';
 import { UnderlineTextField } from '@/components/common/Form/Input/UnderlineTextField';
 import { Spacing } from '@/components/common/layouts/Spacing';
-import useSignUp from '@/hooks/Auth/useSignUp';
 import { breakpoints } from '@/styles/variants';
 
 export const SignUpPage = () => {
