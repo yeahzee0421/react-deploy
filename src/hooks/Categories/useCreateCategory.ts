@@ -1,26 +1,36 @@
 import { useMutation } from '@tanstack/react-query';
-import type { AxiosResponse } from 'axios';
 
 import { BASE_ENDPOINTS } from '@/api/endpoints';
 import { axiosInstance } from '@/api/instance';
+import categoryThumbnail from '@/assets/categoryItem.jpeg';
+import { bannerColors } from '@/styles/variants';
 
-type Category = {
+type Props = {
   name: string;
+  color?: string;
+  imageUrl?: string;
+  description: string;
 };
 
-const categoryRequest = async (name: string) => {
+const getRandomColor = () => {
+  const colors = Object.values(bannerColors);
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
+};
+
+const categoryRequest = async ({ name, description }: Props) => {
   const requestData = {
     name: name,
+    color: getRandomColor(),
+    imageUrl: categoryThumbnail,
+    description: description,
   };
   const response = await axiosInstance.post(`${BASE_ENDPOINTS.CATEGORY}`, requestData);
   return response;
 };
 
 export const useCreateCategory = () => {
-  return useMutation<AxiosResponse<Category>, Error, string>({
+  return useMutation({
     mutationFn: categoryRequest,
-    onError: (error) => {
-      console.error('E', error);
-    },
   });
 };

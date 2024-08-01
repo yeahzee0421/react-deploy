@@ -1,10 +1,14 @@
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 import { useGetCategories } from '@/api/hooks/useGetCategorys';
+import categoryThumbnail from '@/assets/categoryItem.jpeg';
 import { Container } from '@/components/common/layouts/Container';
-// import { Grid } from '@/components/common/layouts/Grid';
-// import { getDynamicPath } from '@/routes/path';
+import { Grid } from '@/components/common/layouts/Grid';
+import { getDynamicPath } from '@/routes/path';
 import { breakpoints } from '@/styles/variants';
+
+import { CategoryItem } from './CategoryItem';
 
 export const CategorySection = () => {
   const { data, isLoading, isError } = useGetCategories();
@@ -15,11 +19,18 @@ export const CategorySection = () => {
   return (
     <Wrapper>
       <Container>
-        {data?.map((category) => (
-          <>
-            <span key={category.id}>{category.name}</span>
-          </>
-        ))}
+        <Grid
+          columns={{
+            initial: 4,
+            md: 6,
+          }}
+        >
+          {data.map((category) => (
+            <Link key={category.id} to={getDynamicPath.category(category.id.toString())}>
+              <CategoryItem image={categoryThumbnail} label={category.name} />
+            </Link>
+          ))}
+        </Grid>
       </Container>
     </Wrapper>
   );

@@ -2,9 +2,8 @@ import { QueryClient } from '@tanstack/react-query';
 import type { AxiosInstance, AxiosRequestConfig } from 'axios';
 import axios from 'axios';
 
-// http://3.36.54.48:8080
-export const BASE_URL = 'http://13.125.199.167:8080';
-export const BASE_URL_CHOI = 'http://13.125.199.167:8080';
+export const BASE_URL = 'http://43.201.17.220:8080';
+export const BASE_URL_CHOI = 'http://43.201.17.220:8080';
 
 export const initInstance = (config: AxiosRequestConfig): AxiosInstance => {
   const instance = axios.create({
