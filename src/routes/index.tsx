@@ -12,7 +12,7 @@ import { SignUpPage } from '@/pages/SignUp';
 import { PrivateRoute } from './components/PrivateRoute';
 import { RouterPath } from './path';
 
-const basename = '/react-deploy';
+const basename = process.env.PUBLIC_URL;
 
 const router = createBrowserRouter(
   [
@@ -67,7 +67,7 @@ const router = createBrowserRouter(
       element: <SignUpPage />,
     },
   ],
-  { basename },
+  { basename: basename },
 );
 
 export const Routes = () => {

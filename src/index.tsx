@@ -1,6 +1,5 @@
 import '@/styles';
 
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import App from '@/App';
@@ -17,9 +16,5 @@ async function deferRender() {
 }
 
 deferRender().then(() => {
-  root.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>,
-  );
+  root.render(<App />);
 });
