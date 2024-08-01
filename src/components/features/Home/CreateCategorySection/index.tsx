@@ -15,6 +15,7 @@ interface FormValues {
 
 export const CreateCategorySection = () => {
   const [isInputVisible, setIsInputVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -25,6 +26,13 @@ export const CreateCategorySection = () => {
 
   const handleCreateButtonClick = () => {
     setIsInputVisible(true);
+    setErrorMessage(null);
+  };
+
+  const handleCancelButtonClick = () => {
+    reset();
+    setIsInputVisible(false);
+    setErrorMessage(null);
   };
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
@@ -34,6 +42,10 @@ export const CreateCategorySection = () => {
         onSuccess: () => {
           reset();
           setIsInputVisible(false);
+          setErrorMessage(null); // Clear error message on successful submission
+        },
+        onError: () => {
+          setErrorMessage('카테고리 생성을 실패했습니다.');
         },
       },
     );
@@ -43,7 +55,7 @@ export const CreateCategorySection = () => {
     <Wrapper>
       <Container justifyContent="center" alignItems="center">
         {!isInputVisible && (
-          <Button colorScheme="gray" onClick={handleCreateButtonClick}>
+          <Button size="sm" colorScheme="gray" onClick={handleCreateButtonClick}>
             카테고리 만들기
           </Button>
         )}
@@ -58,17 +70,23 @@ export const CreateCategorySection = () => {
               {errors.categoryName && <Error>{errors.categoryName.message}</Error>}
               <Input
                 placeholder="카테고리 설명을 입력하세요"
-                {...register('description')}
+                {...register('description', { required: '카테고리 설명을 입력하세요' })}
                 isDisabled={isPending || isSubmitting}
               />
-              <Button type="submit" colorScheme="gray" isLoading={isPending || isSubmitting}>
-                생성하기
-              </Button>
+              {errors.description && <Error>{errors.description.message}</Error>}
+              <ButtonWrapper>
+                <Button colorScheme="gray" onClick={handleCancelButtonClick}>
+                  취소하기
+                </Button>
+                <Button type="submit" colorScheme="orange">
+                  생성하기
+                </Button>
+              </ButtonWrapper>
             </VStack>
           </form>
         )}
         {isPending && <Spinner />}
-        {isError && <Error>{'카테고리 생성 중 오류가 발생했습니다.'}</Error>}
+        {isError && errorMessage && <Error>{errorMessage}</Error>}
       </Container>
     </Wrapper>
   );
@@ -84,6 +102,14 @@ const Wrapper = styled.section`
 
 const Error = styled.span`
   color: red;
+  font-size: 12px;
   font-weight: 600;
-  margin-top: 5px;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
 `;

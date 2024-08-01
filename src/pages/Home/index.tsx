@@ -8,8 +8,8 @@ export const HomePage = () => {
   return (
     <>
       <SelectFriendsBanner />
-      <CreateCategorySection />
       <CategorySection />
+      <CreateCategorySection />
       <AiDiscoveryBanner />
       <Spacing
         height={{
