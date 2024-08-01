@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
-import { useGetProducts } from '@/api/hooks/useGetProducts';
+import { imageUrl, useGetProducts } from '@/api/hooks/useGetProducts';
 import { DefaultGoodsItems } from '@/components/common/GoodsItem/Default';
 import { Container } from '@/components/common/layouts/Container';
 import { Grid } from '@/components/common/layouts/Grid';
@@ -37,7 +37,7 @@ export const CategoryProductsSection = ({ categoryId }: Props) => {
           }}
           gap={16}
         >
-          {flattenGoodsList.map(({ id, imageUrl, name, price }) => (
+          {flattenGoodsList.map(({ id, name, price }) => (
             <Link key={id} to={getDynamicPath.productsDetail(id)}>
               <DefaultGoodsItems
                 key={id}

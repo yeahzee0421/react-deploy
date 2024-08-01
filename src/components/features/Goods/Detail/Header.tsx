@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 
 import type { ProductDetailRequestParams } from '@/api/hooks/useGetProductDetail';
 import { useGetProductDetail } from '@/api/hooks/useGetProductDetail';
+import { imageUrl } from '@/api/hooks/useGetProducts';
 import { breakpoints } from '@/styles/variants';
 
 type Props = ProductDetailRequestParams;
@@ -12,7 +13,7 @@ export const GoodsDetailHeader = ({ productId }: Props) => {
 
   return (
     <Wrapper>
-      <GoodsImage src={detail.imageUrl} alt={detail.name} />
+      <GoodsImage src={imageUrl} alt={detail.name} />
       <InfoWrapper>
         <Title>{detail.name}</Title>
         <Price>{detail.price}원</Price>

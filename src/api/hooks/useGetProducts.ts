@@ -32,6 +32,10 @@ type ProductsResponseRawData = {
   last: boolean;
 };
 
+//서버 이미지 배포X, 임시 url
+export const imageUrl =
+  'https://st.kakaocdn.net/product/gift/product/20240215083306_8e1db057580145829542463a84971ae3.png';
+
 export const getProductsPath = ({ categoryId, pageToken, maxResults }: RequestParams) => {
   const params = new URLSearchParams();
 

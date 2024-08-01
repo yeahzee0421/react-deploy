@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 import { useGetProductDetail } from '@/api/hooks/useGetProductDetail';
+import { imageUrl } from '@/api/hooks/useGetProducts';
 import { Image } from '@/components/common/Image';
 import { Spacing } from '@/components/common/layouts/Spacing';
 import type { OrderHistory } from '@/types';
@@ -21,7 +22,7 @@ export const GoodsInfo = ({ orderHistory }: Props) => {
       <GoodsWrapper>
         <GoodsInfoWrapper>
           <GoodsInfoImage>
-            <Image src={detail.imageUrl} width={86} ratio="square" />
+            <Image src={imageUrl} width={86} ratio="square" />
           </GoodsInfoImage>
           <GoodsInfoTextWrapper>
             <GoodsInfoTextTitle>
