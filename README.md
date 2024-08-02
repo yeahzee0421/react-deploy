@@ -29,9 +29,10 @@ npm run start:MSW
 - [x] 카테고리 생성
 - [x] 카테고리 목록 조회
 
-**✨Product API**
+**✨Product, Order API**
 
 - [x] 상품 목록 조회
+- [ ] 상품 주문
 
 **✨Option API**
 
