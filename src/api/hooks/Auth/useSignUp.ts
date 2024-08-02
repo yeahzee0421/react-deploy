@@ -24,6 +24,7 @@ const useSignUp = () => {
         navigate(RouterPath.login);
       }
     },
+    //상태코드에 따라 메세지는 따로 처리하는 방법
     onError: (error: AxiosError) => {
       if (error.response?.status === 409) {
         alert('이미 존재하는 아이디입니다.');

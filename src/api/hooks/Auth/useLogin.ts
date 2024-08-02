@@ -32,6 +32,7 @@ const useLogin = (id: string) => {
         window.location.replace(redirectUrl);
       }
     },
+    //서버에서 던져주는 메세지 그대로 사용하는 방법 적용
     onError: (error: AxiosError) => {
       const errorResponse = error.response;
       const errorData = error.response?.data as ErrorData;
