@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import { authSessionStorage } from '@/utils/storage';
 
-export const BASE_URL = 'http://13.125.199.167:8080';
+export const BASE_URL = 'http://43.201.17.220:8080 ';
 
 const token = authSessionStorage.get()?.token;
 
